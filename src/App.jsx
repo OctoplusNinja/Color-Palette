@@ -1,6 +1,6 @@
 import Palette from "./components/Palette/Palette";
 import seedColors from "./seedColors";
-// import "./App.css";
+import "./App.css";
 
 function App() {
   return (
