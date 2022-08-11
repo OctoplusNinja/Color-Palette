@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 
 const StyledPaletteList = styled.div`
   background-color: blue;
-  height: 100%;
+  height: 100vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;

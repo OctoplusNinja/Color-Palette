@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { useNavigate } from "react-router-dom";
 
 const StyledMiniPalette = styled.div`
   background-color: white;
@@ -7,12 +8,23 @@ const StyledMiniPalette = styled.div`
   border-radius: 5px;
   padding: 0.5rem;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   &:hover {
     cursor: pointer;
   }
   & > div {
-    background-color: gray;
+    background-color: #dae1d4;
+    height: 150px;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    & > .miniColor {
+      height: 25%;
+      width: 20%;
+      display: inline-block;
+      margin: 0 auto;
+      position: relative;
+    }
   }
   & > h5 {
     display: flex;
@@ -31,10 +43,21 @@ const StyledMiniPalette = styled.div`
 `;
 
 function MiniPalette(props) {
-  const { paletteName, emoji } = props;
+  let navigate = useNavigate();
+  const { paletteName, emoji, colors, id } = props;
+  function handleClick() {
+    navigate(`/palette/${id}`);
+  }
+  const miniColorBoxes = colors.map((color) => (
+    <div
+      className="miniColor"
+      style={{ backgroundColor: color.color }}
+      key={color.name}
+    ></div>
+  ));
   return (
-    <StyledMiniPalette>
-      <div></div>
+    <StyledMiniPalette onClick={handleClick}>
+      <div>{miniColorBoxes}</div>
       <h5>
         {paletteName} <span>{emoji}</span>
       </h5>
